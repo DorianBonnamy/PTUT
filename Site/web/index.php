@@ -8,7 +8,22 @@
 
 require_once __DIR__.'/../vendor/autoload.php';
 
+use Doctrine\ORM\Tools\Setup;
+use Doctrine\ORM\EntityManager;
+
 $app = new Silex\Application();
+$app->register(new Silex\Provider\UrlGeneratorServiceProvider());
+
+/**
+ * DEPENDANCES
+ */
+$app['connection'] = [
+    'driver' => 'pdo_mysql',
+    'host' => 'localhost',
+    'user' => 'root',
+    'password' => '',
+    'dbname' => 'ptut_2016_2017'
+];
 
 $app->get('/', 'DUT\\Controllers\\ItemsController::example');
 
