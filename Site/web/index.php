@@ -25,6 +25,12 @@ $app['connection'] = [
     'dbname' => 'ptut_2016_2017'
 ];
 
-$app->get('/', 'DUT\\Controllers\\ItemsController::example');
+$app['doctrine_config'] = Setup::createYAMLMetadataConfiguration([__DIR__ . '/../config'], true);
+$app['em'] = function ($app) {
+    return EntityManager::create($app['connection'], $app['doctrine_config']);
+};
 
+$app->get('/', 'DUT\\Controllers\\ItemsController::indexAction');
+
+$app['debug'] = true;
 $app->run();
