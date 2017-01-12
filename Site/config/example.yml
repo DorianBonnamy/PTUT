@@ -1,0 +1,25 @@
+DUT\Models\Article:
+  type: entity
+  table: article
+
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: auto
+
+  fields:
+    titre:
+      type: string
+      column: titre
+      nullable: false
+
+    texte:
+      type: string
+      column: texte
+      nullable: false
+
+    image:
+      type: string
+      column: image
+      nullable: false
